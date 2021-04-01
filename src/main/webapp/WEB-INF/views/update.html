@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update person</title>
+
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${(user.getId())})}" th:object="${user}">
+    <label for="username"> Update username: </label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>
+    <br/>
+    <label for="nickname"> Update nickname: </label>
+    <input type="text" th:field="*{nickname}" id="nickname"/>
+    <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Nickname Error</div>
+    <br/>
+    <label for="email"> Update email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+    <br/>
+    <label for="password"> Update password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+    <br/>
+    <input type="submit" value="Update!">
+</form>
+<br/>
+<hr/>
+<a href="/admin"> Go back </a>
+<br/>
+<hr/>
+<form class="form-logout" method="get" action="/logout">
+    <button class="button" type="submit"> Logout </button>
+</form>
+</body>
+</html>
